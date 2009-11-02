@@ -595,16 +595,16 @@ namespace Hpdi.Vss2Git
             return null;
         }
 
-        public static string GetWorkingPath(string workingRoot, string vssPath)
+        public static string GetWorkingPath(string workingRoot, string vssPath, string vssRootProjectPath)
         {
-            if (vssPath == "$")
+            if (vssPath == vssRootProjectPath)
             {
                 return workingRoot;
             }
 
-            if (vssPath.StartsWith("$/"))
+            if (vssPath.StartsWith(vssRootProjectPath + "/"))
             {
-                vssPath = vssPath.Substring(2);
+                vssPath = vssPath.Substring(vssRootProjectPath.Length + 1);
             }
 
             var relPath = vssPath.Replace(VssDatabase.ProjectSeparatorChar, Path.DirectorySeparatorChar);

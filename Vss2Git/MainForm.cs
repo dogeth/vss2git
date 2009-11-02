@@ -115,6 +115,11 @@ namespace Hpdi.Vss2Git
                     {
                         gitExporter.CommitEncoding = encoding;
                     }
+                    if (vssRootProjectPathCheckBox.Checked)
+                    {
+                        gitExporter.VssRootProjectPath = project.Path;
+                    }
+
                     gitExporter.ExportToGit(outDirTextBox.Text);
                 }
 
@@ -130,6 +135,9 @@ namespace Hpdi.Vss2Git
             catch (Exception ex)
             {
                 ShowException(ex);
+                //ensure the logger is released so that when we retry after correcting the error the log file isn't locked
+                if (logger != null) logger.Dispose();
+                logger = Logger.Null;
             }
         }
 

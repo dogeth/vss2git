@@ -47,6 +47,13 @@ namespace Hpdi.Vss2Git
             set { emailDomain = value; }
         }
 
+        private string vssRootProjectPath = "$";
+        public string VssRootProjectPath
+        {
+            get { return vssRootProjectPath; }
+            set { vssRootProjectPath = value; }
+        }
+
         private Encoding commitEncoding = Encoding.UTF8;
         public Encoding CommitEncoding
         {
@@ -112,7 +119,7 @@ namespace Hpdi.Vss2Git
                 // create mappings for root projects
                 foreach (var rootProject in revisionAnalyzer.RootProjects)
                 {
-                    var rootPath = VssPathMapper.GetWorkingPath(repoPath, rootProject.Path);
+                    var rootPath = VssPathMapper.GetWorkingPath(repoPath, rootProject.Path, VssRootProjectPath);
                     pathMapper.SetProjectPath(rootProject.PhysicalName, rootPath, rootProject.Path);
                 }
 

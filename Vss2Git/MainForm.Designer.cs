@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.vssGroupBox = new System.Windows.Forms.GroupBox();
+            this.encodingLabel = new System.Windows.Forms.Label();
+            this.encodingComboBox = new System.Windows.Forms.ComboBox();
             this.excludeTextBox = new System.Windows.Forms.TextBox();
             this.excludeLabel = new System.Windows.Forms.Label();
             this.vssProjectTextBox = new System.Windows.Forms.TextBox();
@@ -46,6 +48,7 @@
             this.changeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.timeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.outputGroupBox = new System.Windows.Forms.GroupBox();
+            this.transcodeCheckBox = new System.Windows.Forms.CheckBox();
             this.domainTextBox = new System.Windows.Forms.TextBox();
             this.domainLabel = new System.Windows.Forms.Label();
             this.outDirTextBox = new System.Windows.Forms.TextBox();
@@ -60,9 +63,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.anyCommentUpDown = new System.Windows.Forms.NumericUpDown();
-            this.encodingComboBox = new System.Windows.Forms.ComboBox();
-            this.encodingLabel = new System.Windows.Forms.Label();
-            this.transcodeCheckBox = new System.Windows.Forms.CheckBox();
+            this.vssRootProjectPathCheckBox = new System.Windows.Forms.CheckBox();
             this.vssGroupBox.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.outputGroupBox.SuspendLayout();
@@ -89,6 +90,26 @@
             this.vssGroupBox.TabIndex = 0;
             this.vssGroupBox.TabStop = false;
             this.vssGroupBox.Text = "VSS Settings";
+            // 
+            // encodingLabel
+            // 
+            this.encodingLabel.AutoSize = true;
+            this.encodingLabel.Location = new System.Drawing.Point(6, 100);
+            this.encodingLabel.Name = "encodingLabel";
+            this.encodingLabel.Size = new System.Drawing.Size(52, 13);
+            this.encodingLabel.TabIndex = 6;
+            this.encodingLabel.Text = "Encoding";
+            // 
+            // encodingComboBox
+            // 
+            this.encodingComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.encodingComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.encodingComboBox.FormattingEnabled = true;
+            this.encodingComboBox.Location = new System.Drawing.Point(81, 97);
+            this.encodingComboBox.Name = "encodingComboBox";
+            this.encodingComboBox.Size = new System.Drawing.Size(473, 21);
+            this.encodingComboBox.TabIndex = 7;
             // 
             // excludeTextBox
             // 
@@ -147,7 +168,7 @@
             // goButton
             // 
             this.goButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.goButton.Location = new System.Drawing.Point(416, 351);
+            this.goButton.Location = new System.Drawing.Point(416, 382);
             this.goButton.Name = "goButton";
             this.goButton.Size = new System.Drawing.Size(75, 23);
             this.goButton.TabIndex = 3;
@@ -167,7 +188,7 @@
             this.revisionLabel,
             this.changeLabel,
             this.timeLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 380);
+            this.statusStrip.Location = new System.Drawing.Point(0, 414);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(584, 22);
             this.statusStrip.TabIndex = 5;
@@ -176,7 +197,7 @@
             // statusLabel
             // 
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(253, 17);
+            this.statusLabel.Size = new System.Drawing.Size(291, 17);
             this.statusLabel.Spring = true;
             this.statusLabel.Text = "Idle";
             this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -184,19 +205,19 @@
             // fileLabel
             // 
             this.fileLabel.Name = "fileLabel";
-            this.fileLabel.Size = new System.Drawing.Size(42, 17);
+            this.fileLabel.Size = new System.Drawing.Size(41, 17);
             this.fileLabel.Text = "Files: 0";
             // 
             // revisionLabel
             // 
             this.revisionLabel.Name = "revisionLabel";
-            this.revisionLabel.Size = new System.Drawing.Size(68, 17);
+            this.revisionLabel.Size = new System.Drawing.Size(65, 17);
             this.revisionLabel.Text = "Revisions: 0";
             // 
             // changeLabel
             // 
             this.changeLabel.Name = "changeLabel";
-            this.changeLabel.Size = new System.Drawing.Size(80, 17);
+            this.changeLabel.Size = new System.Drawing.Size(77, 17);
             this.changeLabel.Text = "Changesets: 0";
             // 
             // timeLabel
@@ -209,6 +230,7 @@
             // 
             this.outputGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.outputGroupBox.Controls.Add(this.vssRootProjectPathCheckBox);
             this.outputGroupBox.Controls.Add(this.transcodeCheckBox);
             this.outputGroupBox.Controls.Add(this.domainTextBox);
             this.outputGroupBox.Controls.Add(this.domainLabel);
@@ -218,10 +240,22 @@
             this.outputGroupBox.Controls.Add(this.logLabel);
             this.outputGroupBox.Location = new System.Drawing.Point(12, 144);
             this.outputGroupBox.Name = "outputGroupBox";
-            this.outputGroupBox.Size = new System.Drawing.Size(560, 120);
+            this.outputGroupBox.Size = new System.Drawing.Size(560, 151);
             this.outputGroupBox.TabIndex = 1;
             this.outputGroupBox.TabStop = false;
             this.outputGroupBox.Text = "Output Settings";
+            // 
+            // transcodeCheckBox
+            // 
+            this.transcodeCheckBox.AutoSize = true;
+            this.transcodeCheckBox.Checked = true;
+            this.transcodeCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.transcodeCheckBox.Location = new System.Drawing.Point(9, 97);
+            this.transcodeCheckBox.Name = "transcodeCheckBox";
+            this.transcodeCheckBox.Size = new System.Drawing.Size(209, 17);
+            this.transcodeCheckBox.TabIndex = 6;
+            this.transcodeCheckBox.Text = "Transcode commit comments to UTF-8";
+            this.transcodeCheckBox.UseVisualStyleBackColor = true;
             // 
             // domainTextBox
             // 
@@ -281,7 +315,7 @@
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(497, 351);
+            this.cancelButton.Location = new System.Drawing.Point(497, 382);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 4;
@@ -297,7 +331,7 @@
             this.changesetGroupBox.Controls.Add(this.label2);
             this.changesetGroupBox.Controls.Add(this.label1);
             this.changesetGroupBox.Controls.Add(this.anyCommentUpDown);
-            this.changesetGroupBox.Location = new System.Drawing.Point(12, 270);
+            this.changesetGroupBox.Location = new System.Drawing.Point(12, 301);
             this.changesetGroupBox.Name = "changesetGroupBox";
             this.changesetGroupBox.Size = new System.Drawing.Size(560, 75);
             this.changesetGroupBox.TabIndex = 2;
@@ -364,37 +398,17 @@
             this.anyCommentUpDown.Size = new System.Drawing.Size(54, 20);
             this.anyCommentUpDown.TabIndex = 1;
             // 
-            // encodingComboBox
+            // vssRootProjectPathCheckBox
             // 
-            this.encodingComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.encodingComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.encodingComboBox.FormattingEnabled = true;
-            this.encodingComboBox.Location = new System.Drawing.Point(81, 97);
-            this.encodingComboBox.Name = "encodingComboBox";
-            this.encodingComboBox.Size = new System.Drawing.Size(473, 21);
-            this.encodingComboBox.TabIndex = 7;
-            // 
-            // encodingLabel
-            // 
-            this.encodingLabel.AutoSize = true;
-            this.encodingLabel.Location = new System.Drawing.Point(6, 100);
-            this.encodingLabel.Name = "encodingLabel";
-            this.encodingLabel.Size = new System.Drawing.Size(52, 13);
-            this.encodingLabel.TabIndex = 6;
-            this.encodingLabel.Text = "Encoding";
-            // 
-            // transcodeCheckBox
-            // 
-            this.transcodeCheckBox.AutoSize = true;
-            this.transcodeCheckBox.Checked = true;
-            this.transcodeCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.transcodeCheckBox.Location = new System.Drawing.Point(9, 97);
-            this.transcodeCheckBox.Name = "transcodeCheckBox";
-            this.transcodeCheckBox.Size = new System.Drawing.Size(209, 17);
-            this.transcodeCheckBox.TabIndex = 6;
-            this.transcodeCheckBox.Text = "Transcode commit comments to UTF-8";
-            this.transcodeCheckBox.UseVisualStyleBackColor = true;
+            this.vssRootProjectPathCheckBox.AutoSize = true;
+            this.vssRootProjectPathCheckBox.Checked = true;
+            this.vssRootProjectPathCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.vssRootProjectPathCheckBox.Location = new System.Drawing.Point(9, 120);
+            this.vssRootProjectPathCheckBox.Name = "vssRootProjectPathCheckBox";
+            this.vssRootProjectPathCheckBox.Size = new System.Drawing.Size(199, 17);
+            this.vssRootProjectPathCheckBox.TabIndex = 8;
+            this.vssRootProjectPathCheckBox.Text = "Map VSS Project to Output Directory";
+            this.vssRootProjectPathCheckBox.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -402,7 +416,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(584, 402);
+            this.ClientSize = new System.Drawing.Size(584, 436);
             this.Controls.Add(this.changesetGroupBox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.outputGroupBox);
@@ -466,6 +480,7 @@
         private System.Windows.Forms.Label encodingLabel;
         private System.Windows.Forms.ComboBox encodingComboBox;
         private System.Windows.Forms.CheckBox transcodeCheckBox;
+        private System.Windows.Forms.CheckBox vssRootProjectPathCheckBox;
 
     }
 }
